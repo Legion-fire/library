@@ -1,4 +1,4 @@
-package com.example.library.common;
+package com.example.library.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -23,6 +24,13 @@ public class RestExceptionHandler {
     public ApiError handleNotFound(NotFoundException ex, HttpServletRequest req) {
         return new ApiError(404, "Not Found", ex.getMessage(), req.getRequestURI(), Instant.now(), null);
     }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handle(NoResourceFoundException ex, HttpServletRequest req) {
+        return new ApiError(404, "Not Found", ex.getMessage(), req.getRequestURI(), Instant.now(), null);
+    }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

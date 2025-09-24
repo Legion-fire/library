@@ -1,6 +1,5 @@
-package com.example.library.author;
+package com.example.library.model;
 
-import com.example.library.book.Book;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;

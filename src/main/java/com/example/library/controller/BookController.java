@@ -1,12 +1,12 @@
-package com.example.library.book;
+package com.example.library.controller;
 
-import com.example.library.book.dto.BookRequest;
-import com.example.library.book.dto.BookResponse;
+import com.example.library.dto.BookRequest;
+import com.example.library.dto.BookResponse;
+import com.example.library.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +20,7 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public Page<BookResponse> getAll(
-            @PageableDefault(size = 20, sort = "title") Pageable pageable
-    ) {
+    public Page<BookResponse> getAll(Pageable pageable) {
         return bookService.findAll(pageable);
     }
 

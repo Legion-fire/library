@@ -1,11 +1,13 @@
-package com.example.library.book;
+package com.example.library.service;
 
-import com.example.library.author.Author;
-import com.example.library.author.AuthorRepository;
-import com.example.library.book.dto.AuthorResponse;
-import com.example.library.book.dto.BookRequest;
-import com.example.library.book.dto.BookResponse;
-import com.example.library.common.NotFoundException;
+import com.example.library.model.Author;
+import com.example.library.model.Book;
+import com.example.library.dto.AuthorResponse;
+import com.example.library.dto.BookRequest;
+import com.example.library.dto.BookResponse;
+import com.example.library.exception.NotFoundException;
+import com.example.library.repo.AuthorRepository;
+import com.example.library.repo.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
